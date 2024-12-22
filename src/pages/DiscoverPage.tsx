@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { RefreshCw, ArrowRight } from 'lucide-react';
+import { ArrowRight, Dices } from 'lucide-react';
 import { fetchAndParseMd } from '../utils/markdownParser';
 import { LoadingScreen } from '../components/LoadingScreen';
 import { SoftwareCard } from '../components/SoftwareCard';
@@ -19,23 +19,21 @@ export function DiscoverPage() {
     });
   }, []);
 
+  const handleReroll = () => {
+    randomize();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth' // Optional for smooth scrolling
+    });
+  }
+
   if (loading) {
     return <LoadingScreen />;
   }
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Discover Amazing Software</h2>
-        <button
-          onClick={randomize}
-          className="flex items-center space-x-2 px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-lg hover:bg-blue-600 transition-colors"
-        >
-          <RefreshCw size={20} />
-          <span>Randomize</span>
-        </button>
-      </div>
-      
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       {categories.map((category) => (
         <section key={category} className="mb-12">
           <div className="flex justify-between items-center mb-4">
@@ -55,6 +53,16 @@ export function DiscoverPage() {
           </div>
         </section>
       ))}
+
+      <div className="flex justify-center w-full items-center mb-4">
+        <button
+          onClick={handleReroll}
+          className="flex items-center space-x-2 px-6 py-2 bg-blue-500 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          <Dices size={20} />
+          <span>Reroll</span>
+        </button>
+      </div>
     </main>
   );
 }
