@@ -32,18 +32,17 @@ export function CatalogPage() {
   };
 
   return (
-    <main className="border max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
         <SearchBar search={search} onSearchChange={setSearch} />
       </div>
       
-      <div className="flex gap-8 border">
-        <div className='border'>
+      <div className="flex gap-8">
+
         <CategorySidebar 
           categories={categoryCount}
           onCategoryClick={handleCategoryClick}
         />
-        </div>
         
         <div className="flex-1 min-w-0">
           <VirtualizedCatalog groupedSoftware={groupedSoftware} />
