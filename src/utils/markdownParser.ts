@@ -22,13 +22,12 @@ export async function fetchAndParseMd(): Promise<Software[]> {
     if (token.type === 'list') {
       token.items.forEach((item: any, index: number) => {
         const text = item.text;
-        const match = text.match(/^\[([^\]]+)\]\(([^\)]+)\)\s*-\s*(.+?)(?:\s*`([^`]+)`)?$/);
+        const match = text.match(/^\[([^\]]+)\]\(([^\)]+)\)\s*-\s*(.+?)(?:\s*`([^`]+)`)(?:\s*`([^`]+)`)?$/);
 
         // Example: - [Activepieces](https://www.activepieces.com) - No-code business automation tool like Zapier or Tray. For example, you can send a Slack notification for each new Trello card. ([Source Code](https://github.com/activepieces/activepieces)) `MIT` `Docker`
         if (match) {
-          const [, name, url, description, license] = match;
+          const [, name, url, description, license, language] = match;
 
-          // Description example: "WackoWiki is a light and easy to install multilingual Wiki-engine. ([Source Code](https://github.com/WackoWiki/wackowiki)) `BSD-3-Clause`"
           const tags = description.match(/\[([^\]]+)\]/g)?.map((tag: string) => tag.slice(1, -1)) || [];
         
           const sourceCode = description.match(/\[Source Code\]\((https?:\/\/[^\)]+)\)/)?.[1]
@@ -43,6 +42,7 @@ export async function fetchAndParseMd(): Promise<Software[]> {
             category: currentCategory,
             tags,
             license,
+            language,
             demo,
           });
         }

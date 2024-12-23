@@ -81,6 +81,10 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-mono">
               {software.license}
             </span>
+
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 font-mono">
+              {software.language}
+            </span>
             {software.tags.map((tag) => (
               <span
                 key={tag}

@@ -9,6 +9,7 @@ export interface Software {
   stars?: number;
   demo?: string;
   sourceCode?: string;
+  language?: string;
 }
 
 export interface CategoryCount {
