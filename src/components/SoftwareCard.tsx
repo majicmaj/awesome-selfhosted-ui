@@ -1,9 +1,10 @@
 // src/components/SoftwareCard.tsx
-import { ExternalLink, FlaskConical, Github, Tag } from 'lucide-react';
+import { ExternalLink, FlaskConical, Github } from 'lucide-react';
 import { useState } from 'react';
 import type { Software } from '../types/Software';
 import { getFaviconUrl } from '../utils/getFaviconUrl';
 import { SoftwareModal } from './SoftwareModal';
+import { LANGUAGE_CHIP_COLORS } from '../constants/languageChipColors';
 
 interface SoftwareCardProps {
   software: Software;
@@ -12,6 +13,12 @@ interface SoftwareCardProps {
 export function SoftwareCard({ software }: SoftwareCardProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const favicon = getFaviconUrl(software.url);
+
+  const getLanguageStyle = (language: string) => {
+    const lowerLanguage = language?.toLowerCase();
+    if (!(lowerLanguage in LANGUAGE_CHIP_COLORS)) return LANGUAGE_CHIP_COLORS.default;
+    return LANGUAGE_CHIP_COLORS[lowerLanguage as keyof typeof LANGUAGE_CHIP_COLORS];
+  };
 
   return (
     <>
@@ -34,6 +41,9 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate">
               {software.name}
             </h3>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-mono">
+              {software.license}
+            </span>
           </div>
           <div className="flex space-x-2 flex-shrink-0 ml-2">
             <a
@@ -78,22 +88,18 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
 
         <div className="mt-4 space-y-2 flex-shrink-0">
           <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-mono">
-              {software.license}
-            </span>
 
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 font-mono">
-              {software.language}
+        {software?.language?.split('/')?.map((language) => {
+          const styles = getLanguageStyle(language);
+          return (
+            <span
+              key={language}
+              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${styles.background} ${styles.text} font-mono`}
+            >
+              {language}
             </span>
-            {software.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-              >
-                <Tag size={12} className="mr-1" />
-                {tag}
-              </span>
-            ))}
+          );
+        })}
           </div>
         </div>
       </div>
