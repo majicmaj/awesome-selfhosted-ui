@@ -54,15 +54,16 @@ export function DiscoverPage() {
         </section>
       ))}
 
-      <div className="flex justify-center w-full items-center mb-4">
+      <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={handleReroll}
-          className="flex items-center space-x-2 px-6 py-2 bg-blue-500 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-blue-500 dark:bg-blue-700 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105"
         >
           <Dices size={20} />
           <span>Reroll</span>
         </button>
       </div>
+
     </main>
   );
 }

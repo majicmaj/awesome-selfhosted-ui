@@ -39,7 +39,7 @@ export async function fetchAndParseMd(): Promise<Software[]> {
             name,
             url,
             sourceCode,
-            description: description.replace(/\([^\)]+\)\)|\`[^\`+\`]/g, ''),
+            description: description.replace(/\([^\)]+\)|\`[^\`]+\`|\[[^\]]+\]/g, ''),
             category: currentCategory,
             tags,
             license,
