@@ -22,20 +22,34 @@ export async function fetchAndParseMd(): Promise<Software[]> {
     if (token.type === 'list') {
       token.items.forEach((item: any, index: number) => {
         const text = item.text;
-        const matches = text.match(/^\[([^\]]+)\]\(([^\)]+)\)\s*-\s*(.+?)(?:\s*`([^`]+)`)?$/);
+        // const matches = text.match(/^\[([^\]]+)\]\(([^\)]+)\)\s*-\s*(.+?)(?:\s*`([^`]+)`)?$/);
+
+        // Match components of the entry
+        const nameMatch = text.match(/^\[([^\]]+)\]/);
+        const urlMatch = text.match(/\(([^\)]+)\)/);
+        const descriptionMatch = text.match(/\]\([^\)]+\)\s*-\s*([^`]+)/);
+        const sourceCodeMatch = text.match(/\((https?:\/\/[^\)]+)\)/g)?.[1];
+        const licenseMatch = text.match(/`([^`]+)`/);
+
         
-        if (matches) {
-          const [, name, url, description, license] = matches;
+        if (nameMatch && urlMatch && descriptionMatch) {
+          const name = nameMatch[1];
+          const url = urlMatch[1];
+          const description = descriptionMatch[1].replace(/\[([^\]]+)\]/g, '').trim();
+          const sourceCode = sourceCodeMatch || null;
+          const license = licenseMatch ? licenseMatch[1] : 'Unknown';
+
           const tags = description.match(/\[([^\]]+)\]/g)?.map(tag => tag.slice(1, -1)) || [];
           
           software.push({
             id: generateUniqueId(name, url, index),
             name,
             url,
-            description: description.replace(/\[([^\]]+)\]/g, '').trim(),
+            sourceCode,
+            description: description.replace(/\(\(https?:\/\/[^\)]+\)\)/g, ''),
             category: currentCategory,
             tags,
-            license: license || 'Unknown'
+            license,
           });
         }
       });

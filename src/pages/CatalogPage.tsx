@@ -34,18 +34,14 @@ export function CatalogPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex gap-8">
+        <aside className="flex-col space-y-4 w-64 flex-shrink-0 hidden md:block overflow-y-auto h-[calc(100vh-100px)] sticky top-20">
+          <SearchBar search={search} onSearchChange={setSearch} />
+          <CategorySidebar 
+            categories={categoryCount}
+            onCategoryClick={handleCategoryClick}
+          />
+        </aside>
 
-      <aside className="flex-col space-y-4 w-64 flex-shrink-0 hidden md:block overflow-y-auto h-[calc(100vh-100px)] sticky top-20">
-        <SearchBar search={search} onSearchChange={setSearch} />
-        <CategorySidebar 
-          categories={categoryCount}
-          onCategoryClick={handleCategoryClick}
-        />
-      </aside>
-
-      
-
-        
         <div className="flex-1 min-w-0">
           <VirtualizedCatalog groupedSoftware={groupedSoftware} />
         </div>

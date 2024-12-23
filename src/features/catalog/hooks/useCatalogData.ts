@@ -51,6 +51,8 @@ export function useCatalogData() {
     return matchesSearch && matchesCategory;
   });
 
+  console.log(filteredSoftware)
+
   const groupedSoftware = filteredSoftware.reduce<Record<string, Software[]>>((acc, item) => {
     if (!acc[item.category]) {
       acc[item.category] = [];

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ExternalLink, Github, Tag } from 'lucide-react';
 import type { Software } from '../types/Software';
 
@@ -76,9 +75,11 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
         </div>
         
         <div className="flex flex-wrap gap-2">
+          
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-mono">
-            `{software.license}`
+            {software.license}
           </span>
+
           {software.tags.map((tag) => (
             <span
               key={tag}
