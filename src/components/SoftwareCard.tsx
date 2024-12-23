@@ -88,18 +88,17 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
 
         <div className="mt-4 space-y-2 flex-shrink-0">
           <div className="flex flex-wrap gap-2">
-
-        {software?.language?.split('/')?.map((language) => {
-          const styles = getLanguageStyle(language);
-          return (
-            <span
-              key={language}
-              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${styles.background} ${styles.text} font-mono`}
-            >
-              {language}
-            </span>
-          );
-        })}
+          {software?.language?.split('/')?.map((language) => {
+            const styles = getLanguageStyle(language);
+            return (
+              <span
+                key={language}
+                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${styles.background} ${styles.text} font-mono`}
+              >
+                {language}
+              </span>
+            );
+          })}
           </div>
         </div>
       </div>
