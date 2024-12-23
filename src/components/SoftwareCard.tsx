@@ -14,19 +14,11 @@ function getFaviconUrl(url: string): string {
   }
 }
 
-function formatLinks(url: string, sourceCode?: string): string {
-  const links = [url];
-  if (sourceCode) {
-    links.push(sourceCode);
-  }
-  return `(${links.join('), (')})`;
-}
-
 export function SoftwareCard({ software }: SoftwareCardProps) {
   const favicon = getFaviconUrl(software.url);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow h-[280px] flex flex-col">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md transition-shadow h-[160px] flex flex-col">
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-2 min-w-0">
           {favicon && (
@@ -70,10 +62,6 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
       </div>
       
       <div className="mt-4 space-y-2 flex-shrink-0">
-        <div className="text-sm text-gray-500 dark:text-gray-400 truncate">
-          {formatLinks(software.url, software.sourceCode)}
-        </div>
-        
         <div className="flex flex-wrap gap-2">
           
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-mono">

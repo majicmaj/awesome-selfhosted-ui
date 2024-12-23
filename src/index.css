@@ -24,3 +24,7 @@
     background-color: #d1d5db;
   }
 }
+
+body {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
