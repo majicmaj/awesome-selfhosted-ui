@@ -14,7 +14,7 @@ Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](h
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/awesome-selfhosted-ui.git
+   git clone https://github.com/majicmaj/awesome-selfhosted-ui.git
    cd awesome-selfhosted-ui
    ```
 
