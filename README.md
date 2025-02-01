@@ -1,9 +1,12 @@
-# Awesome Selfhosted UI
 
-A simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) README and presents it in a clean, user-friendly UI.
+![image](https://github.com/user-attachments/assets/9172ca4b-ac69-4253-9f94-7c8157dc2108)
+# 
+Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) README and presents it in a clean, user-friendly UI.
 
 ## Features
 - Clean and responsive UI for browsing the Awesome Selfhosted list.
+- Discovery Feature for finding new projects
+- A searchable/filterable catalog 
 - Virtualized list for smooth performance with large data.
 - Built with modern tools: React, TypeScript, Tailwind CSS, and Vite.
 
@@ -11,7 +14,7 @@ A simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/awesome-selfhosted-ui.git
+   git clone https://github.com/majicmaj/awesome-selfhosted-ui.git
    cd awesome-selfhosted-ui
    ```
 
