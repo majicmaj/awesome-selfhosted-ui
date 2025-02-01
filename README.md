@@ -10,6 +10,9 @@ Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](h
 - Virtualized list for smooth performance with large data.
 - Built with modern tools: React, TypeScript, Tailwind CSS, and Vite.
 
+## Demo
+ **[awesomeselfhosted.netlify.app](awesomeselfhosted.netlify.app)**
+
 ## Installation
 
 1. Clone the repository:
