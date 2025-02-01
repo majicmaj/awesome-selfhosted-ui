@@ -28,8 +28,8 @@ export function NewPage() {
         {filteredSoftware.map((item) => (
           <SoftwareCard key={item.id} software={item} />
         ))}
-        {filteredSoftware.length === 0 && <NoNewSoftware />}
       </div>
+      {filteredSoftware.length === 0 && <NoNewSoftware />}
     </main>
   );
 }
