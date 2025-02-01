@@ -1,34 +1,36 @@
-import { LoadingScreen } from '../components/LoadingScreen';
-import { SearchBar } from '../components/SearchBar';
-import { CategorySidebar } from '../components/CategorySidebar';
-import { VirtualizedCatalog } from '../features/catalog/components/VirtualizedCatalog';
-import { useCatalogData } from '../features/catalog/hooks/useCatalogData';
+import { LoadingScreen } from "../components/LoadingScreen";
+import { SearchBar } from "../components/SearchBar";
+import { CategorySidebar } from "../components/CategorySidebar";
+import { VirtualizedCatalog } from "../features/catalog/components/VirtualizedCatalog";
+import { useCatalogData } from "../features/catalog/hooks/useCatalogData";
 
 export function CatalogPage() {
-  const { 
-    loading, 
-    search, 
-    setSearch, 
+  const {
+    loading,
+    search,
+    setSearch,
     selectedCategory,
     setSelectedCategory,
-    groupedSoftware, 
-    categories 
+    groupedSoftware,
+    categories,
   } = useCatalogData();
 
   if (loading) {
     return <LoadingScreen />;
   }
 
-  const categoryCount = categories.map(category => ({
+  const categoryCount = categories.map((category) => ({
     name: category,
     count: groupedSoftware[category]?.length || 0,
-    isSelected: category === selectedCategory
+    isSelected: category === selectedCategory,
   }));
 
   const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category === selectedCategory ? '' : category);
-    const element = document.getElementById(category.toLowerCase().replace(/\s+/g, '-'));
-    element?.scrollIntoView({ behavior: 'smooth' });
+    setSelectedCategory(category === selectedCategory ? "" : category);
+    const element = document.getElementById(
+      category.toLowerCase().replace(/\s+/g, "-")
+    );
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -36,7 +38,7 @@ export function CatalogPage() {
       <div className="flex gap-8">
         <aside className="flex-col space-y-4 w-64 flex-shrink-0 hidden md:block overflow-y-auto h-[calc(100vh-100px)] sticky top-20">
           <SearchBar search={search} onSearchChange={setSearch} />
-          <CategorySidebar 
+          <CategorySidebar
             categories={categoryCount}
             onCategoryClick={handleCategoryClick}
           />
