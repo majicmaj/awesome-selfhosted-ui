@@ -1,6 +1,10 @@
 
 ![image](https://github.com/user-attachments/assets/9172ca4b-ac69-4253-9f94-7c8157dc2108)
-# 
+
+
+[![GitHub stars](https://img.shields.io/github/stars/majicmaj/awesome-selfhosted-ui?style=social)](https://github.com/majicmaj/awesome-selfhosted-ui/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/majicmaj/awesome-selfhosted-ui?style=social)](https://github.com/majicmaj/awesome-selfhosted-ui/network)
+
 Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) README and presents it in a clean, user-friendly UI.
 
 ## Features
