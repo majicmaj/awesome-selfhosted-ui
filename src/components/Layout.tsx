@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { HardDriveDownload } from "lucide-react";
 import { useScrollDirection } from "../hooks/useScrollDirection";
+import logo from "@/assets/logo.png";
 
 export function Layout() {
   const { isScrollingDown, scrollY } = useScrollDirection();
@@ -13,7 +14,10 @@ export function Layout() {
         <div className="p-6">
           <div className="flex items-center gap-2.5">
             <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30">
-              <HardDriveDownload className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <img
+                src={logo}
+                className="w-7 h-7 text-blue-600 dark:text-blue-400"
+              />
             </div>
             <div>
               <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
@@ -34,7 +38,7 @@ export function Layout() {
       <div className="flex-1 flex flex-col">
         {/* Mobile header */}
         <header
-          className={`xl:hidden sticky transition-all duration-300 ${
+          className={`xl:hidden sticky transition-all overflow-autoduration-300 ${
             isScrollingDown ? "-top-[72px]" : "top-0"
           } z-10`}
         >
@@ -45,18 +49,13 @@ export function Layout() {
           />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center">
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30">
-                  <HardDriveDownload className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    ASH UI
-                  </h1>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Awesome Selfhosted
-                  </p>
+                  <img
+                    src={logo}
+                    className="aspect-square w-7 h-7 text-blue-600 dark:text-blue-400"
+                  />
                 </div>
               </div>
 
