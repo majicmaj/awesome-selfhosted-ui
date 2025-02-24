@@ -1,7 +1,12 @@
 import { ExternalLink, FlaskConical, Github, Star, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
 import type { Software } from "../types/Software";
 import { LANGUAGE_CHIP_COLORS } from "../constants/languageChipColors";
 import License from "./License";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 
 interface SoftwareModalProps {
   software: Software;
@@ -9,6 +14,33 @@ interface SoftwareModalProps {
 }
 
 export function SoftwareModal({ software, onClose }: SoftwareModalProps) {
+  const [readme, setReadme] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchReadme = async () => {
+      if (!software.sourceCode?.includes("github.com")) return;
+
+      try {
+        // Convert github.com URL to raw.githubusercontent.com URL
+        const rawUrl =
+          software.sourceCode
+            .replace("github.com", "raw.githubusercontent.com")
+            .replace("/tree/master", "")
+            .replace("/blob/master", "") + "/master/README.md";
+
+        const response = await fetch(rawUrl);
+        if (response.ok) {
+          const text = await response.text();
+          setReadme(text);
+        }
+      } catch (error) {
+        console.error("Failed to fetch README:", error);
+      }
+    };
+
+    fetchReadme();
+  }, [software.sourceCode]);
+
   const handleBackgroundClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -55,7 +87,7 @@ export function SoftwareModal({ software, onClose }: SoftwareModalProps) {
       className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50"
       onClick={handleBackgroundClick}
     >
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow flex flex-col shadow-lg max-w-4xl w-full p-6 relative">
+      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow flex flex-col shadow-lg max-w-4xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
         <button
           className="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
           onClick={onClose}
@@ -167,6 +199,45 @@ export function SoftwareModal({ software, onClose }: SoftwareModalProps) {
             ))}
           </div>
         </div>
+
+        {readme && (
+          <div className="mt-8 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                README
+              </h3>
+            </div>
+            <div className="p-6 overflow-auto max-h-[600px] bg-white dark:bg-gray-900">
+              <article
+                className="prose dark:prose-invert max-w-none 
+                prose-headings:border-b prose-headings:border-gray-200 dark:prose-headings:border-gray-800 prose-headings:pb-2
+                prose-headings:mb-4 prose-headings:mt-6
+                prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-lg
+                prose-code:text-gray-800 dark:prose-code:text-gray-200 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                prose-img:rounded-lg prose-img:max-w-full
+                prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700
+                prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300
+                prose-table:border prose-table:border-gray-300 dark:prose-table:border-gray-700
+                prose-th:bg-gray-100 dark:prose-th:bg-gray-800 prose-th:p-2
+                prose-td:p-2 prose-td:border prose-td:border-gray-300 dark:prose-td:border-gray-700"
+              >
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                  components={{
+                    a: ({ node, ...props }) => (
+                      <a {...props} target="_blank" rel="noopener noreferrer" />
+                    ),
+                  }}
+                >
+                  {readme}
+                </ReactMarkdown>
+              </article>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

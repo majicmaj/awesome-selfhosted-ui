@@ -63,7 +63,7 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
             {faviconUrl && (
               <img
                 src={faviconUrl}
-                className="w-8 h-8 flex-shrink-0 rounded-sm bg-gray-100 dark:bg-gray-700"
+                className="w-8 h-8 flex-shrink-0 rounded-sm bg-popover"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}

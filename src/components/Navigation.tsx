@@ -33,9 +33,11 @@ export function Navigation({ className = "" }: NavigationProps) {
         className={linkClass}
       >
         <Github size={20} />
+        <span className="hidden xl:inline">Github</span>
       </NavLink>
       <NavLink to="/settings" className={linkClass}>
         <Settings size={20} />
+        <span className="hidden xl:inline">Settings</span>
       </NavLink>
     </nav>
   );

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@plugin "@tailwindcss/typography";
+
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;

@@ -59,6 +59,19 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+          },
+        },
+      },
     },
   },
+  plugins: [],
 };

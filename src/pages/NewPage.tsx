@@ -5,7 +5,6 @@ import {
   Calendar as CalendarIcon,
   ChevronLeft,
   ChevronRight,
-  Info,
 } from "lucide-react";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { SoftwareCard } from "../components/SoftwareCard";
