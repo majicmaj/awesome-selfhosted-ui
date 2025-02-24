@@ -35,7 +35,11 @@ export async function fetchAndParseMd(): Promise<Software[]> {
         if (nameMatch && urlMatch && descriptionMatch) {
           const name = nameMatch[1];
           // Convert name to a slug (lowercase with hyphens)
-          const softwareSlug = name?.toLowerCase()?.replaceAll(" ", "-");
+          const softwareSlug = name
+            ?.toLowerCase()
+            .replaceAll(/[^\p{L}0-9-.]+/gu, "-")
+            // this removes leading/trailing hyphens
+            .replace(/^-+|-+$/g, "");
 
           try {
             const cacheKey = `software-${softwareSlug}`;
