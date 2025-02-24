@@ -2,6 +2,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { SearchBar } from "../components/SearchBar";
 import { CategorySidebar } from "../components/CategorySidebar";
 import { VirtualizedCatalog } from "../features/catalog/components/VirtualizedCatalog";
+import { CatalogFilterBar } from "../components/CatalogFilterBar";
 import { useCatalogData } from "../features/catalog/hooks/useCatalogData";
 
 export function CatalogPage() {
@@ -13,6 +14,10 @@ export function CatalogPage() {
     setSelectedCategory,
     groupedSoftware,
     categories,
+    filters,
+    setFilters,
+    availableLicenses,
+    availableLanguages,
   } = useCatalogData();
 
   if (loading) {
@@ -34,19 +39,23 @@ export function CatalogPage() {
   };
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex gap-8">
-        <aside className="flex-col space-y-4 w-64 flex-shrink-0 hidden md:block overflow-y-auto h-[calc(100vh-100px)] sticky top-20">
-          <SearchBar search={search} onSearchChange={setSearch} />
-          <CategorySidebar
-            categories={categoryCount}
-            onCategoryClick={handleCategoryClick}
-          />
-        </aside>
+    <main className="h-screen flex gap-4 w-full">
+      <aside className="hidden md:flex px-2 flex-col min-w-0 w-80 border-r bg-background relative">
+        <SearchBar search={search} onSearchChange={setSearch} />
+        <CategorySidebar
+          categories={categoryCount}
+          onCategoryClick={handleCategoryClick}
+        />
+      </aside>
 
-        <div className="flex-1 min-w-0">
-          <VirtualizedCatalog groupedSoftware={groupedSoftware} />
-        </div>
+      <div className="overflow-auto flex flex-col w-full gap-4">
+        <CatalogFilterBar
+          filters={filters}
+          onFiltersChange={setFilters}
+          availableLicenses={availableLicenses}
+          availableLanguages={availableLanguages}
+        />
+        <VirtualizedCatalog groupedSoftware={groupedSoftware} />
       </div>
     </main>
   );

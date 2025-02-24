@@ -10,7 +10,7 @@ export function VirtualizedCatalog({
 }: VirtualizedCatalogProps) {
   const categories = Object.keys(groupedSoftware);
   return (
-    <div className="space-y-12">
+    <div className="flex flex-col gap-8 overflow-auto">
       {categories.map((category) => (
         <CatalogSection
           key={category}

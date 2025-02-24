@@ -10,6 +10,8 @@ export interface Software {
   demo?: string;
   sourceCode?: string;
   language?: string;
+  lastUpdated?: string;
+  archived?: boolean;
 }
 
 export interface CategoryCount {

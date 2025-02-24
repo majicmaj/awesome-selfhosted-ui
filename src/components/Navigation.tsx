@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom";
-import { Compass, Github, List, Sparkles } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { Compass, Github, List, Settings, Sparkles } from "lucide-react";
 
-export function Navigation() {
+interface NavigationProps {
+  className?: string;
+}
+
+export function Navigation({ className = "" }: NavigationProps) {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center space-x-2 px-4 py-1.5 rounded-lg transition-all ${
+    `flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
       isActive
-        ? "bg-white/10 text-blue-600 dark:text-gray-100 backdrop-blur-sm shadow-lg"
-        : "text-gray-600 dark:text-gray-300 hover:bg-white/5 hover:backdrop-blur-sm"
+        ? "bg-gradient-to-r from-primary/30 to-secondary/20 text-foreground"
+        : "hover:bg-primary/10"
     }`;
 
   return (
-    <nav className="flex items-center gap-2 overflow-auto">
+    <nav className={`flex items-center gap-1 ${className}`}>
       <NavLink to="/" className={linkClass} end>
         <Compass size={20} />
         <span>Discover</span>
@@ -24,17 +27,16 @@ export function Navigation() {
         <Sparkles size={20} />
         <span>New</span>
       </NavLink>
-      <div className="h-6 w-[1px] bg-gray-700/50 dark:bg-gray-300/50" />
       <NavLink
         to="https://github.com/majicmaj/awesome-selfhosted-ui"
         target="_blank"
         className={linkClass}
       >
-        <Github size="20" />
+        <Github size={20} />
       </NavLink>
-      <div className="ml-auto">
-        <ThemeToggle />
-      </div>
+      <NavLink to="/settings" className={linkClass}>
+        <Settings size={20} />
+      </NavLink>
     </nav>
   );
 }
