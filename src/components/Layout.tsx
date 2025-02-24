@@ -51,12 +51,10 @@ export function Layout() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2.5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30">
-                  <img
-                    src={logo}
-                    className="aspect-square w-7 h-7 text-blue-600 dark:text-blue-400"
-                  />
-                </div>
+                <img
+                  src={logo}
+                  className="aspect-square min-w-7 w-7 h-7 text-blue-600 dark:text-blue-400"
+                />
               </div>
 
               <Navigation />
