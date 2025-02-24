@@ -7,18 +7,22 @@
     scrollbar-width: thin;
   }
 
+
   .scrollbar-thumb-gray-200::-webkit-scrollbar {
     width: 6px;
   }
+
 
   .scrollbar-thumb-gray-200::-webkit-scrollbar-track {
     background: transparent;
   }
 
+
   .scrollbar-thumb-gray-200::-webkit-scrollbar-thumb {
     background-color: #e5e7eb;
     border-radius: 3px;
   }
+
 
   .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
     background-color: #d1d5db;
@@ -33,6 +37,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 
 @layer base {
   :root {
