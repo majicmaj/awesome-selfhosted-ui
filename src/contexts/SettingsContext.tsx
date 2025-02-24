@@ -30,7 +30,7 @@ const defaultSettings: Settings = {
   discover: {
     categoriesCount: 10,
     itemsPerCategory: 6,
-    showArchived: false,
+    showArchived: true,
     cacheDuration: 24, // Default to 24 hours
   },
   display: {

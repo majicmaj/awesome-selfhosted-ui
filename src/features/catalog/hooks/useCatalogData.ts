@@ -13,7 +13,7 @@ export function useCatalogData() {
   const selectedCategory = searchParams.get("category") || "";
 
   const [filters, setFilters] = useState<CatalogFilters>({
-    archived: "hide",
+    archived: "all",
     sortBy: "name",
     sortOrder: "asc",
     license: "",
