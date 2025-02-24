@@ -7,6 +7,8 @@
 
 Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) README and presents it in a clean, user-friendly UI.
 
+![image](https://github.com/user-attachments/assets/14c5c80f-95a0-48ac-a651-c512520440d3)
+
 ## Features
 - Clean and responsive UI for browsing the Awesome Selfhosted list.
 - Discovery Feature for finding new projects
