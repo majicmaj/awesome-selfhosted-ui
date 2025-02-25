@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Dices } from "lucide-react";
 import { LoadingScreen } from "../components/LoadingScreen";
