@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { useScrollDirection } from "../hooks/useScrollDirection";
-import logo from "@/assets/logo.png";
 
 export function Layout() {
   const { isScrollingDown, scrollY } = useScrollDirection();
