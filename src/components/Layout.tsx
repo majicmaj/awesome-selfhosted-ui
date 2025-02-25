@@ -11,7 +11,7 @@ export function Layout() {
       {/* Sidebar for large screens */}
       <aside className="bg-card overflow-auto hidden xl:flex flex-col w-56 border-r">
         <div className="flex-1">
-          <Navigation className="grid gap-2 p-4" />
+          <Navigation className="grid gap-2 p-2" />
         </div>
       </aside>
 
