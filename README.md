@@ -42,8 +42,7 @@ _Awesome Selfhosted UI_ is a beautifully crafted, responsive frontend that trans
 - **Virtualized List:** Experience smooth performance even with large data sets.
 - **Modern Technologies:** Built with [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), and [Vite](https://vitejs.dev/).
 
-![Screenshot 1](https://github.com/user-attachments/assets/459c09fd-9d7c-45e4-8cd1-c4cf0a2bb0b3)
-![Screenshot 2](https://github.com/user-attachments/assets/14c5c80f-95a0-48ac-a651-c512520440d3)
+![Screenshot 1](https://github.com/user-attachments/assets/4db87a49-47d7-48a0-87eb-55dbfed7656b)
 
 ---
 
