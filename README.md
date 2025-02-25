@@ -1,12 +1,12 @@
-
-![image](https://github.com/user-attachments/assets/9172ca4b-ac69-4253-9f94-7c8157dc2108)
-
+![image](https://github.com/user-attachments/assets/721bc5be-f2e6-4de9-85e2-fd74b8b9f200)
+# Awesome Selfhosted UI
 
 [![GitHub stars](https://img.shields.io/github/stars/majicmaj/awesome-selfhosted-ui?style=social)](https://github.com/majicmaj/awesome-selfhosted-ui/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/majicmaj/awesome-selfhosted-ui?style=social)](https://github.com/majicmaj/awesome-selfhosted-ui/network)
 
 Awesome Selfhosted UI is a simple frontend that pulls the [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) README and presents it in a clean, user-friendly UI.
 
+![image](https://github.com/user-attachments/assets/459c09fd-9d7c-45e4-8cd1-c4cf0a2bb0b3)
 ![image](https://github.com/user-attachments/assets/14c5c80f-95a0-48ac-a651-c512520440d3)
 
 ## Features
@@ -60,7 +60,3 @@ Contributions are welcome! Please open an issue or submit a pull request.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-Built with ❤️ using React, Tailwind CSS, and Vite.
