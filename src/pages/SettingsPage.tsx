@@ -9,7 +9,7 @@ export function SettingsPage() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         {/* Theme Settings */}
         <div className="bg-card rounded-xl shadow-sm border p-6">

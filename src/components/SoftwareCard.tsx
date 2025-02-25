@@ -34,10 +34,8 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
     ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
     : null;
 
-  // Determine card styling based on status
-  const cardStyle = software.archived
-    ? "bg-card bg-gradient-to-br from-warning/5 to-transparent border-warning/20"
-    : "bg-card bg-gradient-to-br from-primary/5 to-transparent border-primary/20";
+  const cardStyle =
+    "bg-card bg-gradient-to-br from-primary/10 via-transparent to-transparent";
 
   const getLanguageStyle = (language: string) => {
     const lowerLanguage = language?.toLowerCase();

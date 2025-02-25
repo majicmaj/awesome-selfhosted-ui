@@ -7,6 +7,12 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface SoftwareModalProps {
   software: Software;
@@ -112,9 +118,18 @@ export function SoftwareModal({ software, onClose }: SoftwareModalProps) {
               </h2>
               <License license={software.license} />
               {software.archived && (
-                <span className="text-sm text-red-500 font-medium">
-                  (Archived)
-                </span>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="bg-warning/20 border border-warning/20 text-warning-foreground rounded-full px-2 text-xs ml-2">
+                        Archived
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      This software is no longer maintained.
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               )}
             </div>
             {software.stars !== undefined && (

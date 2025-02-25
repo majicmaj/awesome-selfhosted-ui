@@ -7,7 +7,7 @@ interface NavigationProps {
 
 export function Navigation({ className = "" }: NavigationProps) {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+    `flex items-center gap-2 p-2 rounded-lg transition-all ${
       isActive
         ? "bg-gradient-to-r from-primary/30 to-secondary/20 text-foreground"
         : "hover:bg-primary/10"
