@@ -5,6 +5,12 @@ import { LANGUAGE_CHIP_COLORS } from "../constants/languageChipColors";
 import License from "./License";
 import { useSettings } from "../contexts/SettingsContext";
 import { SoftwareModal } from "./SoftwareModal";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface SoftwareCardProps {
   software: Software;
@@ -71,12 +77,21 @@ export function SoftwareCard({ software }: SoftwareCardProps) {
             )}
 
             <div className="min-w-0 overflow-hidden">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="flex items-center text-lg font-semibold text-gray-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {software.name}
                 {software.archived && (
-                  <span className="ml-2 text-xs text-red-500/75 dark:text-red-400/75 font-normal">
-                    (Archived)
-                  </span>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="bg-warning/20 border border-warning/20 text-warning-foreground rounded-full px-2 text-xs ml-2">
+                          Archived
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        This software is no longer maintained.
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 )}
               </h3>
               {settings.display.showLicenseBadges && (

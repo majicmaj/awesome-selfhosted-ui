@@ -24,7 +24,7 @@ export function CatalogFilterBar({
   availableLanguages,
 }: CatalogFilterBarProps) {
   return (
-    <div className="flex flex-wrap items-center gap-3 p-4 bg-card rounded-lg shadow-sm border">
+    <div className="flex flex-wrap items-center gap-3 p-3 bg-card rounded-lg shadow-sm border">
       {/* Archive Filter */}
       <select
         value={filters.archived}

@@ -1,4 +1,4 @@
-import { Hash, Minus } from "lucide-react";
+import { Hash } from "lucide-react";
 import { CategoryCount } from "../types/Software";
 import { useCatalogData } from "../features/catalog/hooks/useCatalogData";
 
@@ -14,14 +14,14 @@ export function CategorySidebar({
   const { search } = useCatalogData();
 
   return (
-    <nav className="space-y-1">
+    <nav className="flex flex-col gap-2 overflow-auto">
       {categories
         .filter(({ count }) => !search || !!count)
         .map(({ name, count, isSelected }) => (
           <button
             key={name}
             onClick={() => onCategoryClick(name)}
-            className={`flex w-full overflow-auto items-center justify-between px-4 py-2 text-sm rounded-lg transition-colors ${
+            className={`flex w-full items-center justify-between px-4 py-2 text-sm rounded-lg transition-colors ${
               isSelected
                 ? "dark:bg-gray-700/50 bg-gray-300/50 dark:text-white text-black"
                 : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50"
@@ -46,7 +46,7 @@ export function CategorySidebar({
                   : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
               }`}
             >
-              {count || <Minus className="opacity-50" />}
+              {count || "_"}
             </span>
           </button>
         ))}

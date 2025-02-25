@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Navigation } from "./Navigation";
-import { HardDriveDownload } from "lucide-react";
 import { useScrollDirection } from "../hooks/useScrollDirection";
 import logo from "@/assets/logo.png";
 
@@ -8,24 +7,18 @@ export function Layout() {
   const { isScrollingDown, scrollY } = useScrollDirection();
 
   return (
-    <div className="min-h-screen bg-background bg-gradient-to-b transition-colors flex">
+    <div className="min-h-screen h-screen overflow-auto bg-background bg-gradient-to-b transition-colors flex">
       {/* Sidebar for large screens */}
-      <aside className="hidden xl:flex flex-col w-64 border-r bg-background">
+      <aside className="overflow-auto hidden xl:flex flex-col w-64 border-r bg-background">
         <div className="p-6">
           <div className="flex items-center gap-2.5">
             <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30">
-              <img
-                src={logo}
-                className="w-7 h-7 text-blue-600 dark:text-blue-400"
-              />
+              <img src={logo} className="w-7 h-7" />
             </div>
             <div>
               <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 ASH UI
               </h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Awesome Selfhosted
-              </p>
             </div>
           </div>
         </div>
@@ -35,7 +28,7 @@ export function Layout() {
       </aside>
 
       {/* Main content area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 w-full flex-col overflow-auto">
         {/* Mobile header */}
         <header
           className={`xl:hidden sticky transition-all overflow-autoduration-300 ${
@@ -62,7 +55,7 @@ export function Layout() {
           </div>
         </header>
 
-        <div className="flex-1 relative">
+        <div className="flex-1 flex flex-col w-full relative overflow-auto">
           <Outlet />
         </div>
       </div>

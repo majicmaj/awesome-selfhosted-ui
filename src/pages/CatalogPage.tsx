@@ -48,7 +48,7 @@ export function CatalogPage() {
         />
       </aside>
 
-      <div className="overflow-auto flex flex-col w-full gap-4">
+      <div className="overflow-auto flex flex-col w-full gap-4 pr-2 pt-2">
         <CatalogFilterBar
           filters={filters}
           onFiltersChange={setFilters}
