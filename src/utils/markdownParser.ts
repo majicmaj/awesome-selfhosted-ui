@@ -105,7 +105,7 @@ export async function fetchAndParseMd(): Promise<Software[]> {
                     ? itemData.platforms.join("/")
                     : itemData.platforms || "",
                   lastUpdated: itemData.updated_at,
-                  archived: itemData.archived || false,
+                  archived: itemData.archived === true, // Changed this line
                 });
               } catch (e) {
                 console.error(`Failed to fetch or parse data for ${name}:`, e);
